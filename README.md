@@ -4,7 +4,9 @@ A filesystem prompt selector plugin for [Inquirer.js](https://github.com/SBoudri
 
 <div align="center">
 
+[![npm version](https://badge.fury.io/js/inquirer-fs-selector.svg)](https://badge.fury.io/js/inquirer-fs-selector)
 [![dependency status](https://david-dm.org/micalevisk/inquirer-fs-selector.svg)](https://david-dm.org/micalevisk/inquirer-fs-selector)
+[![npm downloads](https://img.shields.io/npm/dt/inquirer-fs-selector.svg)]()
 
 </div>
 
