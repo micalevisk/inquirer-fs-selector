@@ -2,7 +2,10 @@
   "name": "inquirer-fs-selector",
   "version": "1.1.0",
   "description": "A filesystem prompt selector for Inquirer.js",
-  "main": "src/index.js",
+  "main": "index.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postversion": "git push && git push --tags"
@@ -10,6 +13,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/micalevisk/inquirer-fs-selector.git"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org"
   },
   "keywords": [
     "Inquirer",
@@ -25,10 +31,16 @@
   },
   "homepage": "https://github.com/micalevisk/inquirer-fs-selector#readme",
   "dependencies": {
-    "chalk": "1.1.1",
-    "cli-cursor": "2.0.0",
-    "figures": "2.0.0",
-    "inquirer": "2.0.0",
+    "chalk": "^2.0.0",
+    "cli-cursor": "^3.1.0",
+    "figures": "^3.0.0",
     "rx-lite": "4.0.8"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.101.0",
+    "inquirer": "^6.3.1"
+  },
+  "peerDependencies": {
+    "inquirer": "^5.0.0 || ^6.0.0"
   }
 }
