@@ -23,6 +23,7 @@ npm install --save inquirer-fs-selector
 - Search for file with <kbd>/</kbd> key
 - **Customize (or disable) file and directory icons**
 - **Select file (optionally) or directory**
+- **Define the initial pointer position**
 
 ### Key Maps
 
@@ -47,12 +48,15 @@ inquirer.prompt({
 Change `fs-selector` to whatever you might prefer.
 
 ### Parameters
+> **Note:** allowed options written inside square brackets (`[]`) are optional. Others are required.
 
-Takes `type`, `name`, `message`, `basePath` and [`options`](#options) properties.
+Takes `type`, `name`, `message`, `basePath`[, `default`, [`options`](#options) ] properties.
 
-See [inquirer.js README](https://github.com/SBoudrias/Inquirer.js/blob/master/README.md) for meaning of all except **basePath**.
+See [inquirer.js README](https://github.com/SBoudrias/Inquirer.js/blob/master/README.md) for meaning of all except **basePath** and **default**.
 
-Where **`basePath`** is the relative path from your current working directory.
+Which are:
+- **`basePath`** the relative path from your current working directory
+- **`default`** the name of the item (*string*) where the pointer will be initially positioned (default: `'.'`)
 
 #### Return
 
@@ -68,7 +72,7 @@ An object with the following shape
 
 #### [Example](./example.js)
 
-[![asciicast demo](https://asciinema.org/a/251915.svg)](https://asciinema.org/a/251915)
+[![asciicast demo](https://asciinema.org/a/252042.svg)](https://asciinema.org/a/252042)
 
 ### Options
 

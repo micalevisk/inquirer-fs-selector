@@ -152,13 +152,16 @@ function Prompt() {
     this.opt.icons = defaultIcons;
   }
 
+  this.opt.default = (typeof this.opt.default === 'string') ? this.opt.default : CURRENT;
+
   this.currentPath = path.isAbsolute(this.opt.basePath) ? path.resolve(this.opt.basePath) : path.resolve(process.cwd(), this.opt.basePath);
   this.root = path.parse(this.currentPath).root;
   this.opt.choices = new Choices(this.createChoices(), this.answers);
-  this.selected = 0;
 
-  // Make sure no default is set (so it won"t be printed)
-  this.opt.default = null;
+  const pointer = this.opt.choices.realChoices.findIndex(function(realChoice) {
+    return realChoice.name === this.opt.default;
+  }.bind(this));
+  this.selected = pointer || 0;
 
   this.searchTerm = '';
 

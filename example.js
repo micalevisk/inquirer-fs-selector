@@ -12,6 +12,7 @@ inquirer.prompt([{
   name: "fs",
   message: "Choose a file or directory",
   basePath: "./",
+  //default: ".git",
   options: {
     displayHidden: true,
     displayFiles: true,
