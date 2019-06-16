@@ -1,108 +1,86 @@
-# inquirer-select-directory
+# inquirer-fs-selector
 
-A directory prompt for [Inquirer.js](https://github.com/SBoudrias/Inquirer.js).
+A filesystem prompt selector plugin for [Inquirer.js](https://github.com/SBoudrias/Inquirer.js).
 
-This project is a fork of [Inquirer-directory](https://github.com/nicksrandall/inquirer-directory) which does not limit the navigation to the current folder.
+<div align="center">
 
-<!--[![Issue Count](https://codeclimate.com/github/KamiKillertO/inquirer-select-directory/badges/issue_count.svg)](https://codeclimate.com/github/KamiKillertO/inquirer-select-directory)!-->
-![](https://img.shields.io/badge/license-MIT-blue.svg)
-[![](https://img.shields.io/badge/release-v1.1.0-blue.svg)](https://github.com/KamiKillertO/inquirer-select-directory/releases/tag/v1.1.0)
-[![Build Status](https://travis-ci.org/KamiKillertO/inquirer-select-directory.svg)](https://travis-ci.org/KamiKillertO/inquirer-select-directory)
-[![Build status](https://ci.appveyor.com/api/projects/status/fdyk5g3y56381742?svg=true)](https://ci.appveyor.com/project/KamiKillertO/inquirer-select-directory)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e6a963539c4440b69356649c0048ea30)](https://www.codacy.com/app/kamikillerto/inquirer-select-directory?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KamiKillertO/inquirer-select-directory&amp;utm_campaign=Badge_Grade)
+[![dependency status](https://david-dm.org/micalevisk/inquirer-fs-selector.svg)](https://david-dm.org/micalevisk/inquirer-fs-selector)
+
+</div>
 
 ## Installation
 
 ```bash
-npm install --save inquirer-select-directory
+npm install --save inquirer-fs-selector
 ```
 
 ## Features
 
--   Support for symlinked files
--   Vim style navigation
--   Search for file with "/" key
+- Support for symlinked files
+- Vim style navigation
+- Search for file with <kbd>/</kbd> key
+- **Customize (or disable) file and directory icons**
+- **Select file (optionally) or directory**
 
 ### Key Maps
 
--   Press "/" key to enter search mode.
--   Press "-" key to go up (back) a directory.
--   Press "." key to select the current directory.
+- Press <kbd>/</kbd> key to enter search mode
+- Press <kbd>-</kbd> key to go up (back) a directory
+- Press <kbd>.</kbd> key to select the current directory
 
 ## Usage
 
 This prompt is anonymous, meaning you can register this prompt with the type name you please:
 
 ```javascript
-inquirer.registerPrompt('directory', require('inquirer-select-directory'));
+inquirer.registerPrompt('fs-selector', require('inquirer-fs-selector'));
+
+// so
 inquirer.prompt({
-  type: 'directory',
-  ...
+  type: 'fs-selector',
+  /* ... */
 })
 ```
 
-Change `directory` to whatever you might prefer.
+Change `fs-selector` to whatever you might prefer.
 
 ### Parameters
 
-Takes `type`, `name`, `message`, `basePath`, `options` properties.
+Takes `type`, `name`, `message`, `basePath` and [`options`](#options) properties.
 
-See [inquirer](https://github.com/SBoudrias/Inquirer.js) readme for meaning of all except **basePath**.
+See [inquirer.js README](https://github.com/SBoudrias/Inquirer.js/blob/master/README.md) for meaning of all except **basePath**.
 
-**basePath** is the relative path from your current working directory
+Where **`basePath`** is the relative path from your current working directory.
 
-#### [Example](https://github.com/KamiKillertO/inquirer-select-directory/tree/develop/example/example.js)
+#### Return
 
-```javascript
-inquirer.registerPrompt('directory', require('inquirer-select-directory'));
-inquirer.prompt([{
-  type: 'directory',
-  name: 'from',
-  message: 'Where you like to put this component?',
-  basePath: './src'
-}]).then(function(answers) {
-  //etc
-});
+An object with the following shape
+
+```typescript
+{
+  isDirectory: Boolean,
+  isFile: Boolean,
+  path: String // path to selected file or directory
+}
 ```
+
+#### [Example](./example.js)
+
+[![asciicast demo](https://asciinema.org/a/251915.svg)](https://asciinema.org/a/251915)
 
 ### Options
 
-#### options.displayFiles
+| key | default | description |
+|---|--------|:-----------|
+`displayFiles` | `true` | Set this to `false` if you need to hide files
+`displayHidden` | `false` | Set this to `true` if you to display hidden folders (and `displayFiles === true`)
+`canSelectFile` | `true` (if `displayFiles === true`) | Set this to `false` to disable files selection
+`icons.currentDir` | `'\u{1F4C2}'` (📂) | Set an icon for current directory
+`icons.dir` | `'\u{1F4C1}'` (📁) | Set an icon for other directories
+`icons.file` | `'\u{1F4C4}'` (📄) | Set an icon for files
 
-default ***false***
-
-Set this to true if you to display files
-
-```javascript
-inquirer.prompt([{
-  type: 'directory',
-  //...
-  options: {
-      displayFiles:true
-  }
-}]).then(function(answers) {
-  //etc
-});
-```
-
-#### options.displayHidden
-
-default ***false***
-
-Set this to true if you to display hidden folders (and files if displayFiles is set to `true`) 
-
-```javascript
-inquirer.prompt([{
-  type: 'directory',
-  //...
-  options: {
-      displayHidden:true
-  }
-}]).then(function(answers) {
-  //etc
-});
-```
+To disable prompt **icons**, make `icons === false`.
 
 ## License
 
-MIT
+[MIT](./LICENSE)

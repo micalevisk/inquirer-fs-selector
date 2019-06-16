@@ -1,28 +1,29 @@
 {
-  "name": "inquirer-select-directory",
-  "version": "1.2.0",
-  "description": "A directory prompt for Inquirer.js",
+  "name": "inquirer-fs-selector",
+  "version": "1.0.0",
+  "description": "A filesystem prompt selector for Inquirer.js",
   "main": "src/index.js",
   "scripts": {
-    "test": "node_modules/.bin/_mocha test/spec",
-    "preversion": "npm test",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KamiKillertO/inquirer-select-directory.git"
+    "url": "git+https://github.com/micalevisk/inquirer-fs-selector.git"
   },
   "keywords": [
     "Inquirer",
     "directory",
-    "prompt"
+    "file",
+    "prompt",
+    "selector"
   ],
-  "author": "JEGARD Benjamin <kamikillerto@gmail.com>",
+  "author": "Micael Levi <mykael2010@hotmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KamiKillertO/inquirer-select-directory/issues"
+    "url": "https://github.com/micalevisk/inquirer-fs-selector/issues"
   },
-  "homepage": "https://github.com/KamiKillertO/inquirer-select-directory#readme",
+  "homepage": "https://github.com/micalevisk/inquirer-fs-selector#readme",
   "dependencies": {
     "chalk": "1.1.1",
     "cli-cursor": "2.0.0",
@@ -33,7 +34,7 @@
   "devDependencies": {
     "chai": "3.4.1",
     "events": "1.1.0",
-    "lodash": "4.17.4",
+    "lodash": "^4.17.11",
     "mocha": "4.0.1",
     "mock-fs": "3.12.1",
     "sinon": "1.17.7"
