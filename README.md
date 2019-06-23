@@ -37,11 +37,9 @@ This prompt is anonymous, meaning you can register this prompt with the type nam
 
 ```javascript
 inquirer.registerPrompt('fs-selector', require('inquirer-fs-selector'));
-
-// so
 inquirer.prompt({
   type: 'fs-selector',
-  /* ... */
+  ...
 })
 ```
 
@@ -70,7 +68,28 @@ An object with the following shape
 }
 ```
 
-#### [Example](./example.js)
+#### Example
+
+```javascript
+const inquirer = require('inquirer')
+inquirer.registerPrompt('fs', require('inquirer-fs-selector'))
+// ...
+inquirer.prompt([{
+  type: 'directory',
+  name: 'fs',
+  message: 'Choose a file or directory',
+  basePath: './',
+  options: {
+    displayHidden: true,
+    displayFiles: true,
+    canSelectFile: true,
+    icons: false, // not show icons
+  }
+}]).then((answers) => {
+  console.log(answers.fs)
+})
+```
+See also [example.js](./example.js) for a working example.
 
 [![asciicast demo](https://asciinema.org/a/252042.svg)](https://asciinema.org/a/252042)
 

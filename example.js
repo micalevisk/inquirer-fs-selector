@@ -5,7 +5,7 @@
 
 const inquirer = require("inquirer");
 
-inquirer.registerPrompt("directory", require("./src/index"));
+inquirer.registerPrompt("directory", require("./index"));
 
 inquirer.prompt([{
   type: "directory",
