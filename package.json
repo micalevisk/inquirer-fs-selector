@@ -41,6 +41,6 @@
     "inquirer": "^6.3.1"
   },
   "peerDependencies": {
-    "inquirer": "^5.0.0 || ^6.0.0 || ^7.0.0 "
+    "inquirer": "^5.0.0 || ^6.0.0 || ^7.0.0"
   }
 }
